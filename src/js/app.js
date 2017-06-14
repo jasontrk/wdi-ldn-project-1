@@ -1,5 +1,12 @@
 $(() => {
 
+  $.get(' https://newsapi.org/v1/articles?source=mtv-news-uk&sortBy=top&apiKey=77552393d57b4f59945d8062a09deaf6')
+  .done((news) => {
+    for(let i = 0; i < 6; i++){
+      $('.news').append(`<a href='${news.articles[i].url}'<h2>${news.articles[i].title}</h2></a><p>${news.articles[i].description}</p>`);
+    }
+  });
+
   const $slider = $('input[type="range"]');
   const $distance = $('.distance');
   const $events = $('.events');
@@ -50,10 +57,10 @@ $(() => {
           <div class="col-md-6">
           <div class="card">
           <div class="card-block">
-          <h4 class="card-title">${event.eventname}</h4>
-          <p class="card-text">${event.venue.name}</p>
-          <p class="card-text">${event.venue.type}</p>
-          <p class="card-text">${event.description}</p>
+          <h4>${event.eventname}</h4>
+          <p><i>${event.date}</i></p>
+          <p>${event.venue.name} (${event.EventCode})</p>
+          <p>${event.description}.</p>
           <a href="${event.link}" class="btn btn-primary">More Info</a>
           ${formHTML}
           </div>

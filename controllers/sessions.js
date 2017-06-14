@@ -9,7 +9,7 @@ function sessionsCreate(req, res, next) {
     .findOne({ email: req.body.email })
     .then((user) => {
       if(!user || !user.validatePassword(req.body.password)) {
-        return res.unauthorized('/login', 'Unknown credentials');
+        return res.unauthorized('/login', 'Unknown credentials, please try again.');
       }
 
       req.session.userId = user.id;

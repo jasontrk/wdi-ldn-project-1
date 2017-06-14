@@ -1,8 +1,7 @@
 <% if (user.image) { %>
   <img src="<%= user.image %>" alt="<%= user.username %>">
 <% } %>
-<h1 class="title">Hello <i><%= user.username %></i>,</h1>
-
+<h1 class="title"><i><%= user.username %></i></h1>
 
 <a href="registrations/<%= user.id %>/edit">Edit Account</a>
 
@@ -18,15 +17,15 @@
 <br>
 
 <% user.events.forEach((event) => { %>
-  <h3><%= event.name %></h3>
+
+  <h3><u><b> <%= event.name %> </b></u></h3>
   <h3>@<%= event.venue %></h3>
   <h3>Location: <%= event.location %></h3>
-  <h3><%= event.description %> </h3>
-
-
+  <h4><%= event.description %> </h4>
 
   <form method="POST" action="/registrations/<%= user.id %>/events/<%= event.id %>">
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="Delete event">
   </form>
+  <br>
 <% }) %>

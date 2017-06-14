@@ -1,14 +1,14 @@
-<div class="card">
-  <img class="card-img-top" src="<%= city.image %>" width="100%">
-  <div class="card-block">
-    <h3 class="card-title" data-location="<%= JSON.stringify({ lat: city.lat, lng: city.lng }) %>"><%= city.name %></h3>
-    <h4 class="card-title"><%= city.country %></h4>
+<div>
+  <img src="<%= city.image %>" width="100%">
+  <div>
+    <h3 data-location="<%= JSON.stringify({ lat: city.lat, lng: city.lng }) %>"><%= city.name %></h3>
+    <h4><%= city.country %></h4>
   </div>
 </div>
 <div class="row">
   <div class="col">
     <h3>Upcoming Events</h3>
-    <input type="range" min=1 max=35 value="10"> <span class="badge badge-primary"><span class="distance">10</span> miles</span>
+    <input type="range" min=1 max=25 value="10"> <span class="badge badge-primary"><span class="distance">10</span> miles</span>
     <hr/>
   </div>
 </div>

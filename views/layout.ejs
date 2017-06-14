@@ -8,6 +8,9 @@
 </head>
 <body>
   <% include ./partials/_header %>
+  <% for (const type in messages) { %>
+        <p class="alert alert-<%= type %>"><%= messages[type] %></p>
+        <% } %>
   <main class="container">
     <%- body %>
   </main>

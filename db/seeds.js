@@ -9,10 +9,20 @@ User.collection.drop();
 mongoose.Promise = require('bluebird');
 
 const City = require('../models/city');
-
 City.collection.drop();
 
-City
+User
+.create([{
+  username: 'Jason',
+  email: 'jason@jason',
+  password: 'password',
+  passwordConfirmation: 'password'
+}])
+
+.then((users) => {
+  console.log(`${users.length} users created`);
+
+  City
   .create([
     {
       name: 'London',
@@ -21,58 +31,124 @@ City
       lng: 0.1278
     },
     {
-      name: 'Paris',
-      country: 'France',
-      lat: 48.8566,
-      lng: 2.3522
+      name: 'Bromley',
+      country: 'Greater London',
+      lat: 51.406025,
+      lng: 0.013156
     },
     {
-      name: 'Rome',
-      country: 'Italy',
-      lat: 41.9028,
-      lng: 12.4964
+      name: 'Birmingham',
+      country: 'Midlands',
+      lat: 33.520661,
+      lng: -86.802490
     },
     {
-      name: 'Berlin',
-      country: 'Germany',
-      lat: 52.5200,
-      lng: 13.4050
+      name: 'Manchester',
+      country: 'North West',
+      lat: 53.480759,
+      lng: -2.242631
     },
     {
-      name: 'Dubai',
-      country: 'United Arab Emirates',
-      lat: 25.2048,
-      lng: 55.2708
+      name: 'Liverpool',
+      country: 'North West',
+      lat: 43.106456,
+      lng: -76.217705
     },
     {
-      name: 'Tokyo',
-      country: 'Japan',
-      lat: 35.6895,
-      lng: 139.6917
+      name: 'Derby',
+      country: 'Midlands',
+      lat: 41.320652,
+      lng: -73.088997
     },
     {
-      name: 'Sydney',
-      country: 'Australia',
-      lat: 33.8688,
-      lng: 151.2093
+      name: 'Nottingham',
+      country: 'Midlands',
+      lat: 52.954783,
+      lng: -1.158109
     },
     {
-      name: 'New York City',
-      country: 'United States of America',
-      lat: 40.7128,
-      lng: 74.0059
+      name: 'Leicester',
+      country: 'Midlands',
+      lat: 52.636878,
+      lng: -1.139759
     },
     {
-      name: 'Mumbai',
-      country: 'India',
-      lat: 19.0760,
-      lng: 72.8777
+      name: 'Oxford',
+      country: 'South East',
+      lat: 51.752021,
+      lng: -1.257726
     },
     {
-      name: 'Beijing',
-      country: 'China',
-      lat: 39.9042,
-      lng: 116.4074
+      name: 'Luton',
+      country: 'South East',
+      lat: 51.878671,
+      lng: -0.420026
+    },
+    {
+      name: 'Southampton',
+      country: 'South East',
+      lat: 50.909700,
+      lng: -1.404351
+    },
+    {
+      name: 'Bristol',
+      country: 'South West',
+      lat: 36.595106,
+      lng: -82.188744
+    },
+    {
+      name: 'Norwich',
+      country: 'East Anglia',
+      lat: 52.630886,
+      lng: 1.297355
+    },
+    {
+      name: 'Chelmsford',
+      country: 'East Anglia',
+      lat: 42.599814,
+      lng: -71.367284
+    },
+    {
+      name: 'Ipswich',
+      country: 'East Anglia',
+      lat: 52.056736,
+      lng: 1.148220
+    },
+    {
+      name: 'Leeds',
+      country: 'North East',
+      lat: 53.800755,
+      lng: -1.549077
+    },
+    {
+      name: 'Huddersfield',
+      country: 'North East',
+      lat: 53.645792,
+      lng: -1.785035
+    },
+    {
+      name: 'Sunderland',
+      country: 'North East',
+      lat: 43.111394,
+      lng: -73.118060
+    },
+    {
+      name: 'Hull',
+      country: 'North East',
+      lat: 53.745671,
+      lng: -0.336741
+    },
+    {
+      name: 'Middlesborough',
+      country: 'North East',
+      lat: 54.574227,
+      lng: -1.234956
+    },
+    {
+      name: 'Sheffield',
+      country: 'North East',
+      lat: 53.381129,
+      lng: -1.470085
     }
   ])
   .then((cities) => {
@@ -84,4 +160,4 @@ City
   .finally(() => {
     mongoose.connection.close();
   });
-mongoose.connection.close();
+});
