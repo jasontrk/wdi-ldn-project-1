@@ -1,11 +1,10 @@
 <ul class="row">
   <% cities.forEach(city => { %>
     <li class="col-lg-4 col-md-6 col-sm-12">
-      <div class="card card-inverse">
+      <div>
         <a href="/cities/<%= city.id %>">
-          <img class="card-img" src="<%= city.image %>" width="100%" height="250" alt="Card image">
-          <div class="card-img-overlay">
-            <h4 class="card-title"><%= city.name %></h4>
+          <div>
+            <h4><%= city.name %></h4>
           </div>
         </a>
       </div>

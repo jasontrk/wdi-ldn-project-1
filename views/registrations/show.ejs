@@ -1,20 +1,32 @@
 <% if (user.image) { %>
   <img src="<%= user.image %>" alt="<%= user.username %>">
 <% } %>
-<h1 class="title"><%= user.username %></h1>
+<h1 class="title">Hello <i><%= user.username %></i>,</h1>
 
-<h2><%= user.events.length %> events</h2>
-<% user.events.forEach((event) => { %>
-  <h3><%= event.name %></h3>
-  <form method="POST" action="/registrations/<%= user.id %>/events/<%= event.id %>">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete event">
-  </form>
-<% }) %>
 
-<a href="registrations/<%= user.id %>/edit">Edit</a>
+<a href="registrations/<%= user.id %>/edit">Edit Account</a>
 
 <form method="POST" action="/registrations/<%= user.id %>">
   <input type="hidden" name="_method" value="DELETE">
   <button class="button is-danger">Delete Account</button>
 </form>
+
+<br>
+
+<h2>Events Interested in: <%= user.events.length %></h2>
+
+<br>
+
+<% user.events.forEach((event) => { %>
+  <h3><%= event.name %></h3>
+  <h3>@<%= event.venue %></h3>
+  <h3>Location: <%= event.location %></h3>
+  <h3><%= event.description %> </h3>
+
+
+
+  <form method="POST" action="/registrations/<%= user.id %>/events/<%= event.id %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete event">
+  </form>
+<% }) %>
