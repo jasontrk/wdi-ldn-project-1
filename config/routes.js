@@ -7,6 +7,8 @@ const sessionsController = require('../controllers/sessions');
 
 router.get('/', (req, res) => res.render('statics/homepage'));
 
+router.get('/events', eventsController.proxy);
+
 router.route('/events')
   .get(eventsController.index);
 
@@ -25,5 +27,10 @@ router.route('/register')
 router.route('/login')
   .get(sessionsController.new)
   .post(sessionsController.create);
+
+
+
+// router.route('/logout')
+//   .get(sessionsController.delete);
 
 module.exports = router;
