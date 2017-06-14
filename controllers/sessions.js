@@ -23,7 +23,12 @@ function sessionsCreate(req, res, next) {
     .catch(next);
 }
 
+function sessionsDelete(req, res) {
+  req.session.regenerate(() => res.redirect('/'));
+}
+
 module.exports = {
   new: sessionsNew,
-  create: sessionsCreate
+  create: sessionsCreate,
+  delete: sessionsDelete
 };

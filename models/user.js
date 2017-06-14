@@ -1,9 +1,20 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+
+const eventSchema = new mongoose.Schema({
+  name: { type: String },
+  venue: { type: String},
+  location: { type: String},
+  description: { type: String},
+  category: { type: String}
+
+});
+
 const userSchema = new mongoose.Schema({
-  username: { type: String, required: true },
+  username: { type: String },
   email: { type: String },
-  password: { type: String }
+  password: { type: String },
+  events: [ eventSchema ]
 });
 
 userSchema
@@ -17,7 +28,7 @@ userSchema.pre('validate', function checkPassword(next) {
   if(!this.password) {
     this.invalidate('password', 'required');
   }
-  if(this.password && this._passwordConfirmation !== this.password){
+  if(this.isModified('password') && this.password && this._passwordConfirmation !== this.password){
     this.invalidate('passwordConfirmation', 'does not match');
   }
   next();

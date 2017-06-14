@@ -1,19 +1,5 @@
-const Event = require('../models/event');
+const User = require('../models/user');
 const rp = require('request-promise');
-
-function eventsIndex(req, res) {
-  Event
-    .find()
-    .exec()
-    .then((events) => {
-      res.render('events/index', { events });
-    })
-    .catch((err) => {
-      res.status(500).render('error', { error: err });
-    });
-}
-
-
 
 function eventProxy(req, res) {
   rp({
@@ -26,9 +12,40 @@ function eventProxy(req, res) {
   });
 }
 
+function createEventRoute(req, res, next) {
+  User
+  .findById(req.params.id)
+  .exec()
+  .then((user) => {
+    console.log(user);
+    if(!user) return res.notFound();
+    user.events.push(req.body); //pushes the data from the req body (which user evented) onto the event, as its an array.
+    return user.save();
+  })
+  .then((user) => res.redirect(`/registrations/${user.id}`))
+  .catch(next);
+}
+
+function deleteEventRoute(req, res, next) {
+  User
+  .findById(req.params.id)
+  .exec()
+  .then((user) => {
+    if(!user) return res.notFound();
+    //get the embedded record by its id
+    const event = user.events.id(req.params.eventId);
+    event.remove();
+
+    return user.save();
+  })
+  .then((user) => res.redirect(`/registrations/${user.id}`))
+  .catch(next);
+}
 
 
 module.exports = {
-  index: eventsIndex,
-  proxy: eventProxy
+
+  proxy: eventProxy,
+  create: createEventRoute,
+  delete: deleteEventRoute
 };
