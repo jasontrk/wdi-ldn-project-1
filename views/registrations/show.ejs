@@ -1,7 +1,8 @@
+<div class="pagemargin"></div>
 <% if (user.image) { %>
   <img src="<%= user.image %>" alt="<%= user.username %>">
 <% } %>
-<h1 class="title"><i><%= user.username %></i></h1>
+<h1 class="title"><i>Welcome back, <%= user.username %></i></h1>
 
 <a href="/registrations/<%= user.id %>/edit">Edit Account</a>
 
