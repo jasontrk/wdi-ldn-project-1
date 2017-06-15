@@ -8,6 +8,7 @@ const citiesController = require('../controllers/cities');
 
 
 router.get('/', (req, res) => res.render('statics/homepage'));
+router.get('/news', (req, res) => res.render('statics/news'));
 
 router.get('/event', eventsController.proxy);
 
