@@ -1,9 +1,53 @@
 $(() => {
 
+  $('.form').find('input, textarea').on('keyup blur focus', function (e) {
+
+    var $this = $(this),
+    label = $this.prev('label');
+
+    if (e.type === 'keyup') {
+      if ($this.val() === '') {
+        label.removeClass('active highlight');
+      } else {
+        label.addClass('active highlight');
+      }
+    } else if (e.type === 'blur') {
+      if( $this.val() === '' ) {
+        label.removeClass('active highlight');
+      } else {
+        label.removeClass('highlight');
+      }
+    } else if (e.type === 'focus') {
+
+      if( $this.val() === '' ) {
+        label.removeClass('highlight');
+      }
+      else if( $this.val() !== '' ) {
+        label.addClass('highlight');
+      }
+    }
+
+  });
+
+  $('.tab a').on('click', function (e) {
+
+    e.preventDefault();
+
+    $(this).parent().addClass('active');
+    $(this).parent().siblings().removeClass('active');
+
+    target = $(this).attr('href');
+
+    $('.tab-content > div').not(target).hide();
+
+    $(target).fadeIn(600);
+    
+  });
+
   $.get(' https://newsapi.org/v1/articles?source=mtv-news-uk&sortBy=top&apiKey=77552393d57b4f59945d8062a09deaf6')
   .done((news) => {
     for(let i = 0; i < 6; i++){
-      $('.news').append(`<a href='${news.articles[i].url}'<h2>${news.articles[i].title}</h2></a><p>${news.articles[i].description}</p>`);
+      $('.news').append(`<a href='${news.articles[i].url} 'target="_blank"<h2>${news.articles[i].title}</h2></a><p>${news.articles[i].description}</p>`);
     }
   });
 
@@ -58,16 +102,16 @@ $(() => {
           <div class="card">
           <div class="card-block">
           <h4>${event.eventname}</h4>
-          <p><i>${event.date}</i></p>
+          <p><i>${event.date} (${event.openingtimes.doorsopen}-${event.openingtimes.doorsclose})</i></p>
           <p>${event.venue.name} (${event.EventCode})</p>
           <p>${event.description}.</p>
-          <a href="${event.link}" class="btn btn-primary">More Info</a>
+          <a href="${event.link}" class="btn btn-info">More Info</a>
           ${formHTML}
           </div>
           </div>
           </div>
           `);
+        });
       });
-    });
-  }
-});
+    }
+  });

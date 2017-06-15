@@ -1,5 +1,7 @@
+<link rel="stylesheet" href="./src/scss/style.scss" />
 
-<h1 class="title">Register</h1>
+
+<%# <h1 class="title">Register</h1>
 
 <form method="POST" action="/register">
 
@@ -16,4 +18,84 @@
   <input type="password" name="passwordConfirmation" id="passwordConfirmation">
 
   <button class="button">Register</button>
-</form>
+</form>%>
+
+
+<div class="form">
+
+      <ul class="tab-group">
+        <li class="tab active"><a href="#signup">Register</a></li>
+        <li class="tab"><a href="#login">Log In</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div id="signup">
+          <h1>Sign Up for Free</h1>
+
+          <form method="POST" action="/register">
+
+
+            <div class="field-wrap">
+              <label>
+                Username<span class="req">*</span>
+              </label>
+              <input type="text" name="username" id="username" required autocomplete="off"/>
+            </div>
+          </div>
+
+          <div class="field-wrap">
+            <label>
+              Email Address<span class="req">*</span>
+            </label>
+            <input type="email" name="email" id="email" required autocomplete="off"/>
+          </div>
+
+          <div class="field-wrap">
+            <label>
+              Password<span class="req">*</span>
+            </label>
+            <input type="password" name="password" id="password"/>
+          </div>
+          <div class="field-wrap">
+            <label>
+              Confirm Password<span class="req">*</span>
+            </label>
+            <input type="password" name="passwordConfirmation" id="passwordConfirmation"/>
+          </div>
+
+          <button type="submit" class="button button-block"/>Sign Up</button>
+
+          </form>
+
+        </div>
+
+        <div id="login">
+          <h1>Welcome Back!</h1>
+
+          <form action="/" method="post">
+
+            <div class="field-wrap">
+            <label>
+              Email Address<span class="req">*</span>
+            </label>
+            <input type="email"required autocomplete="off"/>
+          </div>
+
+          <div class="field-wrap">
+            <label>
+              Password<span class="req">*</span>
+            </label>
+            <input type="password"required autocomplete="off"/>
+          </div>
+
+
+
+          <button class="button button-block"/>Log In</button>
+
+          </form>
+
+        </div>
+
+      </div><!-- tab-content -->
+
+</div> <!-- /form -->
