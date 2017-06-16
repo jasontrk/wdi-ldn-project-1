@@ -1,33 +1,34 @@
 <div class="pagemargin"></div>
 <% if (user.image) { %>
   <img src="<%= user.image %>" alt="<%= user.username %>">
-<% } %>
-<h1 class="title"><i>Welcome back, <%= user.username %></i></h1>
+  <% } %>
+  <h2 class="title"><i>Welcome back, <%= user.username %></i></h2>
 
-<a href="/registrations/<%= user.id %>/edit">Edit Account</a>
+  <a href="/registrations/<%= user.id %>/edit">Edit Account</a>
 
-<form method="POST" action="/registrations/<%= user.id %>">
-  <input type="hidden" name="_method" value="DELETE">
-  <button class="">Delete Account</button>
-</form>
-
-<br>
-
-<h2>Events Interested in: <%= user.events.length %></h2>
-
-<br>
-
-
-<% user.events.forEach((event) => { %>
-
-  <h3><u><b> <%= event.name %> </b></u></h3>
-  <h3>@<%= event.venue %></h3>
-  <h3>Location: <%= event.location %></h3>
-  <h4><%= event.description %> </h4>
-
-  <form method="POST" action="/registrations/<%= user.id %>/events/<%= event.id %>">
+  <form method="POST" action="/registrations/<%= user.id %>">
     <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete event">
+    <button class="btn btn-danger">Delete Account</button>
   </form>
+
   <br>
-<% }) %>
+  <div class="myevents">
+
+    <h4>MyEvents: <%= user.events.length %></h4>
+
+    <br>
+
+    <% user.events.forEach((event) => { %>
+
+      <h3><u><b> <%= event.name %> </b></u></h3>
+      <h5><%= event.venue %></h5>
+      <h5>Location: <%= event.location %></h5>
+      <h5><%= event.description %> </h5>
+
+      <form method="POST" action="/registrations/<%= user.id %>/events/<%= event.id %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" class="btn" value="Delete event">
+      </form>
+      <br>
+      <% }) %>
+  </div>

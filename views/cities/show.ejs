@@ -2,11 +2,12 @@
 <div>
   <div>
     <h3 data-location="<%= JSON.stringify({ lat: city.lat, lng: city.lng }) %>"><%= city.name %></h3>
-    <h4><%= city.country %></h4>
+    <h5><%= city.country %></h5>
   </div>
 </div>
 <div class="row">
   <div class="col">
+    <br>
     <h3>Upcoming Events</h3>
     <input type="range" min=1 max=25 value="10"> <span class="><span class="distance">10</span> miles</span>
     <hr/>

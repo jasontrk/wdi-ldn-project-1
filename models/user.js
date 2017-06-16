@@ -18,10 +18,10 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema
-  .virtual('passwordConfirmation')
-  .set(function setPasswordConfirmation(passwordConfirmation) {
-    this._passwordConfirmation = passwordConfirmation;
-  });
+.virtual('passwordConfirmation')
+.set(function setPasswordConfirmation(passwordConfirmation) {
+  this._passwordConfirmation = passwordConfirmation;
+});
 
 // lifecycle hook - mongoose middleware
 userSchema.pre('validate', function checkPassword(next) {

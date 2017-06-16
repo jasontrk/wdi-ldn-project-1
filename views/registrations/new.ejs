@@ -1,50 +1,50 @@
 <div class="pagemargin"></div>
 <div class="form">
 
+    <div class="tab-content">
+    <div id="signup">
+      <h1>Register</h1>
 
-      <div class="tab-content">
-        <div id="signup">
-          <h1>Register</h1>
-
-          <form method="POST" action="/register">
+      <form method="POST" action="/register">
 
 
-            <div class="field-wrap">
-              <label>
-                Username<span class="req">*</span>
-              </label>
-              <input type="text" name="username" id="username" required autocomplete="off"/>
-            </div>
-          </div>
-
-          <div class="field-wrap">
-            <label>
-              Email Address<span class="req">*</span>
-            </label>
-            <input type="email" name="email" id="email" required autocomplete="off"/>
-          </div>
-
-          <div class="field-wrap">
-            <label>
-              Password<span class="req">*</span>
-            </label>
-            <input type="password" name="password" id="password"/>
-          </div>
-          <div class="field-wrap">
-            <label>
-              Confirm Password<span class="req">*</span>
-            </label>
-            <input type="password" name="passwordConfirmation" id="passwordConfirmation"/>
-          </div>
-
-          <button type="submit" class="button button-block"/>Sign Up</button>
-
-          </form>
-
+        <div class="field-wrap">
+          <label>
+            Username<span class="req">*</span>
+          </label>
+          <input type="text" name="username" id="username" required autocomplete="off"/>
         </div>
+      </div>
+
+      <div class="field-wrap">
+        <label>
+          Email Address<span class="req">*</span>
+        </label>
+        <input type="email" name="email" id="email" required autocomplete="off"/>
+      </div>
+
+      <div class="field-wrap">
+        <label>
+          Password<span class="req">*</span>
+        </label>
+        <input type="password" name="password" id="password" required/>
+      </div>
+      <div class="field-wrap">
+
+        <label>
+          Confirm Password<span class="req">*</span>
+        </label>
+        <input type="password" name="passwordConfirmation" id="passwordConfirmation" required/>
+      </div>
+
+      <button type="submit" class="btn btn-info"/>Sign Up</button>
+
+    </form>
+
+  </div>
 
 
 
-      </div><!-- tab-content -->
+</div><!-- tab-content -->
 
 </div> <!-- /form -->

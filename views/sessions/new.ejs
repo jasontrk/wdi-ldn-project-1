@@ -2,27 +2,27 @@
 
 
 <div id="login">
-  <h1>Welcome Back</h1>
+  <h1>Please Login</h1>
 
-<form method="POST" action="/login">
+  <form method="POST" action="/login">
 
     <div class="field-wrap">
-    <label>
-      Email Address<span class="req">*</span>
-    </label>
-  <input type="text" name="email">
-  </div>
+      <label>
+        Email Address<span class="req">*</span>
+      </label>
+      <input class="email" type="text" name="email" required>
+    </div>
 
-  <div class="field-wrap">
-    <label>
-      Password<span class="req">*</span>
-    </label>
-    <input type="password" name="password">
-  </div>
+    <div class="field-wrap">
+      <label>
+        Password<span class="req">*</span>
+      </label>
+      <input class="password" type="password" name="password" required>
+    </div>
 
 
 
-  <button class="button button-block"/>Log In</button>
+    <button class="btn btn-info""/>Log In</button>
 
   </form>
 

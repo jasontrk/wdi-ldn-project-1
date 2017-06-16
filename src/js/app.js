@@ -4,7 +4,7 @@ $(() => {
   $.get(' https://newsapi.org/v1/articles?source=mtv-news-uk&sortBy=top&apiKey=77552393d57b4f59945d8062a09deaf6')
   .done((news) => {
     for(let i = 0; i < 6; i++){
-      $('.news').append(`<a href='${news.articles[i].url} 'target="_blank"<h2>${news.articles[i].title}</h2></a><p>${news.articles[i].description}</p>`);
+      $('.news').append(`<br><h4 href='${news.articles[i].url} 'target="_blank"<br>${news.articles[i].title}</h4><p>${news.articles[i].description}</p>`);
     }
   });
 
@@ -44,13 +44,14 @@ $(() => {
     })
     .then((data) => {
       data.results.forEach((event) => {
+        // Ternary Operator. If comparison arguement is true then do the truthy arguement. If false, do the falsey arguement. Here I am saying, if userID is present, have hidden event details on page and add to the myevents page
         const formHTML = userId ? `<form action="/registrations/${userId}/events" method="POST">
         <input type="hidden" name="name" value="${event.eventname}">
         <input type="hidden" name="venue" value="${event.venue.name}">
         <input type="hidden" name="location" value="${event.venue.address}">
         <input type="hidden" name="description" value="${event.description}">
         <input type="hidden" name="category" value="${event.venue.type}">
-        <input type="submit" value="Add to MyEvents">
+        <input type="submit" class="btn btn-info" value="Add to MyEvents">
         </form>` : '';
 
         console.log(event);
@@ -63,6 +64,8 @@ $(() => {
           <p>${event.venue.name} (${event.EventCode})</p>
           <p>${event.description}.</p>
           <a href="${event.link}" target="_blank" class="btn btn-info">More Info</a>
+          <a href="/login" class="btn btn-info">Login to add to MyEvents</a>
+
           ${formHTML}
           </div>
           </div>
