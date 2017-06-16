@@ -39,8 +39,8 @@
   z-index: 0;
   width: 1274px;
   height: 560px;
-  background: -webkit-linear-gradient(top,black 0,#ff4454 80%) black;
-  background: linear-gradient(to bottom,black 0,#ff4454 80%) black;
+  background: -webkit-linear-gradient(top,black 0,#b64926 80%) black;
+  background: linear-gradient(to bottom,black 0,#b64926 80%) black;
   opacity: .35;
 }
 .favicon{
@@ -68,8 +68,8 @@
   width: 1274px;
   height: 560px;
   margin-left: -80px;
-  background-image:
-  url('../../src/assets/hero.jpg');
+  // background-image:
+  // url('../../src/assets/hero.jpg');
 
   background-position: center;
   background-size: cover;
@@ -79,6 +79,9 @@
 
 }
 
+// .btn#hidebtn{
+//     display:none
+//    }
 
 header {
   position: fixed; //stretch to the top of the window
