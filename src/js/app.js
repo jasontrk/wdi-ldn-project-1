@@ -37,15 +37,6 @@ $(() => {
     // Adding the radius to the location object
     location.radius = radius;
 
-    // function hidebutton () {
-    //   if(locals.isAuthenticated){
-    //     $('.changedisplay').addClass('hidden');
-    //   } else {
-    //     $('.changedisplay').removeClass('hidden');
-    //   }
-    // }
-
-    // hidebutton();
 
     $.ajax({
       url: '/event',
@@ -57,12 +48,12 @@ $(() => {
         // Ternary Operator. If comparison arguement is true then do the truthy arguement. If false, do the falsey arguement. Here I am saying, if userID is present, have hidden event details on page and add to the myevents page
         const formHTML = userId ? `
         <form action="/registrations/${userId}/events" method="POST">
-          <input type="hidden" name="name" value="${event.eventname}">
-          <input type="hidden" name="venue" value="${event.venue.name}">
-          <input type="hidden" name="location" value="${event.venue.address}">
-          <input type="hidden" name="description" value="${event.description}">
-          <input type="hidden" name="category" value="${event.venue.type}">
-          <input type="submit" class="btn btn-info" value="Add to MyEvents">
+        <input type="hidden" name="name" value="${event.eventname}">
+        <input type="hidden" name="venue" value="${event.venue.name}">
+        <input type="hidden" name="location" value="${event.venue.address}">
+        <input type="hidden" name="description" value="${event.description}">
+        <input type="hidden" name="category" value="${event.venue.type}">
+        <input type="submit" class="btn btn-info" value="Add to MyEvents">
         </form>` : '<a href="/login" id="hidebtn" class="btn btn-info changedisplay">Login to add to MyEvents</a>';
 
         console.log(event);
@@ -80,7 +71,7 @@ $(() => {
           </div>
           </div>
           `);
-        });
       });
-    }
-  });
+    });
+  }
+});
